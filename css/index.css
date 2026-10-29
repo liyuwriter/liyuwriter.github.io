@@ -1,32 +1,37 @@
 :root {
-  /* 纸张感背景与层级色阶 */
-  --bg-color: #faf9f6;         /* 微暖纸白，降低屏幕纯白刺眼感 */
-  --text-title: #1f242d;       /* 标题墨色，深沉但不生硬 */
-  --text-main: #323b48;        /* 正文颜色，柔和的阅读灰 */
-  --text-meta: #8a929c;        /* 辅助信息（日期、格言） */
-  --hover-color: #c85a32;      /* 克制的赭石红，充当唯一强调色 */
-  --border-color: #e8e6e1;     /* 极淡的浅灰色 */
+  --bg-color: #fcfcfc;         
+  --text-main: #37352f;        
+  --text-light: #9e9a93;       
+  --hover-color: #c45525;      
+  --border-color: #ebebeb;     
+}
 
-  /* 字体家族职责分层 */
-  --font-serif: "Georgia", "Songti SC", "STSong", serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+/* 深色模式变量（当 html 标签带有 data-theme="dark" 时生效） */
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;         
+  --text-main: #d4d4d4;        
+  --text-light: #888888;       
+  --hover-color: #e07a5f;      
+  --border-color: #333333;     
+}
+
+/* 增加平滑切换动画 */
+body, .navbar, .post-item, .footer, a {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-main);
-  font-family: var(--font-sans);
-  line-height: 1.75;
+  font-family: "Georgia", "Songti SC", "PingFang SC", serif; 
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* 核心网格：统一 700px 阅读线框，左右对齐更紧凑 */
 .navbar, .container {
   width: 100%;
   max-width: 700px;
@@ -35,14 +40,13 @@ body {
   box-sizing: border-box;
 }
 
-/* 顶部导航：去除硬边框，拉大留白 */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   padding-top: 64px;
-  padding-bottom: 48px;
-  margin-bottom: 20px;
+  padding-bottom: 24px;
+  margin-bottom: 0;
 }
 
 .navbar-brand {
@@ -51,7 +55,6 @@ body {
   align-items: flex-start;
 }
 
-/* 博客主标题：字体微调，更具文人气质感 */
 .navbar-logo {
   font-family: var(--font-serif);
   font-size: 26px;
@@ -62,22 +65,20 @@ body {
   margin-bottom: 6px;
   transition: opacity 0.2s;
 }
-.navbar-logo:hover {
-  opacity: 0.8;
-}
+.navbar-logo:hover { opacity: 0.8; }
 
-/* 副标题格言：小巧利落 */
 .navbar-motto {
   font-family: var(--font-serif);
   font-size: 13.5px;
-  color: var(--text-meta);
+  color: var(--text-light);
   font-style: italic;
   letter-spacing: 0.3px;
 }
 
-/* 右侧导航：字重调轻，间距适度 */
 .navbar-links {
   margin-bottom: 4px;
+  display: flex;
+  align-items: center;
 }
 .navbar-links a {
   margin-left: 24px;
@@ -87,28 +88,37 @@ body {
   font-weight: 500;
   transition: color 0.2s ease;
 }
-.navbar-links a:hover {
-  color: var(--hover-color);
+.navbar-links a:hover { color: var(--hover-color); }
+
+/* 切换按钮样式 */
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 24px;
+  padding: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s, transform 0.2s;
+}
+#theme-toggle:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
-/* 文章列表容器 */
 .container {
-  flex: 1;
-  margin-top: 10px;
+  flex: 0 1 auto;
+  margin-top: 0;
 }
 
-/* 文章条目：舒展排版 */
 .post-item {
-  padding: 36px 0;
+  padding: 24px 0;
   border-bottom: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
 }
-.post-item:last-child {
-  border-bottom: none;
-}
+.post-item:last-child { border-bottom: none; }
 
-/* 文章标题：柔和克制 */
 .post-item h2 {
   margin: 6px 0 12px 0;
   font-size: 20px;
@@ -118,54 +128,48 @@ body {
   line-height: 1.45;
 }
 .post-item h2 a {
-  color: var(--text-title);
+  color: var(--text-main);
   text-decoration: none;
   transition: color 0.2s ease;
 }
-.post-item h2 a:hover {
-  color: var(--hover-color);
-}
+.post-item h2 a:hover { color: var(--hover-color); }
 
-/* 日期辅助信息：等宽字体，弱化处理 */
 .post-meta {
   font-family: var(--font-mono);
-  color: var(--text-meta);
+  color: var(--text-light);
   font-size: 12.5px;
   letter-spacing: 0.5px;
   margin-bottom: 4px;
 }
 
-/* 摘要正文：字号微增，行高加大 */
 .excerpt {
-  color: #5d6570;
+  color: var(--text-main);
+  opacity: 0.8;
   font-size: 16px;
   line-height: 1.8;
   margin: 0;
 }
 
-/* 页脚：顺应内联排布，增加留白 */
 .footer {
   text-align: center;
   padding: 48px 0 36px;
-  color: var(--text-meta);
+  color: var(--text-light);
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.5px;
   margin-top: auto;
 }
 
-/* 文章详情页：衬线字体增强阅读沉浸感 */
 article h1 {
   font-family: var(--font-serif);
   font-size: 28px !important;
   font-weight: 700;
-  color: var(--text-title);
+  color: var(--text-main);
   margin-bottom: 12px;
   line-height: 1.4;
   letter-spacing: -0.4px;
 }
 
-/* 移动端适配 */
 @media (max-width: 600px) {
   .navbar {
     padding-top: 40px;
@@ -174,27 +178,20 @@ article h1 {
     flex-direction: column;
     gap: 16px;
   }
-  .navbar-links a {
-    margin-left: 0;
-    margin-right: 20px;
-  }
+  .navbar-links a { margin-left: 0; margin-right: 20px; }
+  .navbar-links { width: 100%; justify-content: flex-start; }
+  #theme-toggle { margin-left: auto; } /* 手机端将按钮放最右边 */
 }
 
-/* 压缩导航栏底部和文章列表顶部的间距 */
+/* 极限压缩导航栏与文章列表的间距 */
 .navbar {
-  padding-bottom: 24px !important; /* 从 48px 缩减到 24px */
-  margin-bottom: 0 !important;     /* 去掉底部外边距 */
+  padding-bottom: 10px !important;
 }
 
 .container {
-  margin-top: 0 !important;        /* 去掉顶部外边距 */
+  margin-top: 0 !important;
 }
 
-.post-item {
-  padding: 24px 0 !important;      /* 文章自身的上下留白稍微收一点 */
-}
-
-/* 如果只剩一篇文章，不要让它撑满中间，直接往上靠 */
-.container {
-  flex: 0 1 auto !important; 
+.post-item:first-child {
+  padding-top: 10px !important;
 }
