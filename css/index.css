@@ -1,0 +1,200 @@
+:root {
+  /* 纸张感背景与层级色阶 */
+  --bg-color: #faf9f6;         /* 微暖纸白，降低屏幕纯白刺眼感 */
+  --text-title: #1f242d;       /* 标题墨色，深沉但不生硬 */
+  --text-main: #323b48;        /* 正文颜色，柔和的阅读灰 */
+  --text-meta: #8a929c;        /* 辅助信息（日期、格言） */
+  --hover-color: #c85a32;      /* 克制的赭石红，充当唯一强调色 */
+  --border-color: #e8e6e1;     /* 极淡的浅灰色 */
+
+  /* 字体家族职责分层 */
+  --font-serif: "Georgia", "Songti SC", "STSong", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 核心网格：统一 700px 阅读线框，左右对齐更紧凑 */
+.navbar, .container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+/* 顶部导航：去除硬边框，拉大留白 */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 64px;
+  padding-bottom: 48px;
+  margin-bottom: 20px;
+}
+
+.navbar-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* 博客主标题：字体微调，更具文人气质感 */
+.navbar-logo {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: var(--text-title);
+  text-decoration: none;
+  margin-bottom: 6px;
+  transition: opacity 0.2s;
+}
+.navbar-logo:hover {
+  opacity: 0.8;
+}
+
+/* 副标题格言：小巧利落 */
+.navbar-motto {
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  color: var(--text-meta);
+  font-style: italic;
+  letter-spacing: 0.3px;
+}
+
+/* 右侧导航：字重调轻，间距适度 */
+.navbar-links {
+  margin-bottom: 4px;
+}
+.navbar-links a {
+  margin-left: 24px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.navbar-links a:hover {
+  color: var(--hover-color);
+}
+
+/* 文章列表容器 */
+.container {
+  flex: 1;
+  margin-top: 10px;
+}
+
+/* 文章条目：舒展排版 */
+.post-item {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+.post-item:last-child {
+  border-bottom: none;
+}
+
+/* 文章标题：柔和克制 */
+.post-item h2 {
+  margin: 6px 0 12px 0;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: var(--font-serif);
+  letter-spacing: -0.2px;
+  line-height: 1.45;
+}
+.post-item h2 a {
+  color: var(--text-title);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.post-item h2 a:hover {
+  color: var(--hover-color);
+}
+
+/* 日期辅助信息：等宽字体，弱化处理 */
+.post-meta {
+  font-family: var(--font-mono);
+  color: var(--text-meta);
+  font-size: 12.5px;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+/* 摘要正文：字号微增，行高加大 */
+.excerpt {
+  color: #5d6570;
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* 页脚：顺应内联排布，增加留白 */
+.footer {
+  text-align: center;
+  padding: 48px 0 36px;
+  color: var(--text-meta);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  margin-top: auto;
+}
+
+/* 文章详情页：衬线字体增强阅读沉浸感 */
+article h1 {
+  font-family: var(--font-serif);
+  font-size: 28px !important;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 12px;
+  line-height: 1.4;
+  letter-spacing: -0.4px;
+}
+
+/* 移动端适配 */
+@media (max-width: 600px) {
+  .navbar {
+    padding-top: 40px;
+    padding-bottom: 32px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .navbar-links a {
+    margin-left: 0;
+    margin-right: 20px;
+  }
+}
+
+/* 压缩导航栏底部和文章列表顶部的间距 */
+.navbar {
+  padding-bottom: 24px !important; /* 从 48px 缩减到 24px */
+  margin-bottom: 0 !important;     /* 去掉底部外边距 */
+}
+
+.container {
+  margin-top: 0 !important;        /* 去掉顶部外边距 */
+}
+
+.post-item {
+  padding: 24px 0 !important;      /* 文章自身的上下留白稍微收一点 */
+}
+
+/* 如果只剩一篇文章，不要让它撑满中间，直接往上靠 */
+.container {
+  flex: 0 1 auto !important; 
+}
