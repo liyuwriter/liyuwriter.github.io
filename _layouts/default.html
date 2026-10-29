@@ -6,7 +6,6 @@
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <link rel="stylesheet" href="/css/index.css">
   <script>
-    // 防止闪烁：如果在本地存了 dark，立刻加上 data-theme
     if (localStorage.getItem('theme') === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
@@ -21,6 +20,7 @@
     <div class="navbar-links">
       <a href="/">文章</a>
       <a href="/about/">关于</a>
+      <a href="/feed.xml" target="_blank" title="RSS 订阅">RSS</a>
       <a href="https://github.com/liyuwriter" target="_blank">GitHub</a>
       <button id="theme-toggle" aria-label="切换深色/浅色模式">🌙</button>
     </div>
@@ -36,29 +36,24 @@
     const toggleBtn = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
     
-    // 定义更新图标函数
     function updateIcon() {
-      // 检查 html 标签上是否有 data-theme="dark"
       if (htmlElement.getAttribute('data-theme') === 'dark') {
         toggleBtn.textContent = '☀️';
       } else {
         toggleBtn.textContent = '🌙';
       }
     }
-
-    // 页面加载时先更新一次图标
     updateIcon();
 
-    // 点击切换逻辑
     toggleBtn.addEventListener('click', function() {
       if (htmlElement.getAttribute('data-theme') === 'dark') {
-        htmlElement.removeAttribute('data-theme'); // 移除深色
-        localStorage.setItem('theme', 'light');    // 记录为浅色
+        htmlElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
       } else {
-        htmlElement.setAttribute('data-theme', 'dark'); // 添加深色
-        localStorage.setItem('theme', 'dark');          // 记录为深色
+        htmlElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
       }
-      updateIcon(); // 切换后更新图标
+      updateIcon();
     });
   </script>
 </body>
