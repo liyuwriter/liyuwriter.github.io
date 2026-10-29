@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<div class="container" style="margin-top: 40px;">
+  {% for post in site.posts %}
+    <article class="post-item">
+      <div class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <p class="excerpt">
+        {{ post.excerpt | strip_html | strip_newlines | truncate: 120 }}
+      </p>
+    </article>
+  {% else %}
+    <div style="text-align: center; color: #999; padding: 50px 0;">还没有文章，快去写一篇吧！</div>
+  {% endfor %}
+</div>

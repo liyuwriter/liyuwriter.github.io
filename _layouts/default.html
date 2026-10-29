@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a href="/" class="navbar-logo">{{ site.title }}</a>
+      <span class="navbar-motto">I think, therefore I am.</span>
+    </div>
+    <div class="navbar-links">
+      <a href="/">文章</a>
+      <a href="/about/">关于</a>
+      <a href="https://github.com/liyuwriter" target="_blank">GitHub</a>
+    </div>
+  </nav>
+  
+  {{ content }}
+  
+  <footer class="footer">
+    &copy; {{ site.time | date: '%Y' }} {{ site.title }}. Powered by Jekyll.
+  </footer>
+</body>
+</html>
