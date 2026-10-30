@@ -544,7 +544,7 @@ body {
 /* 空状态 */
 .empty-state {
   text-align: center;
-  color: #999;
+  color: var(--text-light);
   padding: 50px 0;
 }
 
