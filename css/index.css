@@ -239,3 +239,33 @@ article h1 {
 article h1 {
   font-size: 24px !important;
 }
+
+/* 标签胶囊样式 */
+.post-tag, .tag-link {
+  display: inline-block;
+  padding: 2px 10px;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 13px;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+/* 悬停时变色 */
+.post-tag:hover, .tag-link:hover {
+  background-color: var(--hover-color);
+  border-color: var(--hover-color);
+  color: #fff;
+}
+
+/* 标签云居中 */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 50px;
+  justify-content: flex-start;
+}
