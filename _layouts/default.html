@@ -54,13 +54,17 @@
       );
     }
 
-    // 监听 Giscus iframe 加载完成的消息，精确同步一次
-    window.addEventListener('message', function(e) {
+    function onGiscusMessage(e) {
       if (e.origin !== 'https://giscus.app') return;
       if (!(typeof e.data === 'object' && e.data.giscus)) return;
+      // 过滤心跳消息，避免无限循环
+      if (e.data.giscus.keepAlive) return;
       var currentTheme = htmlEl.getAttribute('data-theme') || 'light';
       syncGiscusTheme(currentTheme);
-    });
+      // 初始同步完成后移除监听，后续靠手动切换触发
+      window.removeEventListener('message', onGiscusMessage);
+    }
+    window.addEventListener('message', onGiscusMessage);
 
     toggleBtn.addEventListener('click', function() {
       var isDark = htmlEl.getAttribute('data-theme') === 'dark';
