@@ -3,6 +3,8 @@ html, body {
   background-color: #1a1a1a !important;
   color: #d4d4d4 !important;
 }
+
+/* 容器背景 */
 .gsc-comment-box, .gsc-reactions-menu, .gsc-popover {
   background-color: #1a1a1a !important;
   border-color: #333333 !important;
@@ -11,15 +13,32 @@ html, body {
   background-color: transparent !important;
   color: #d4d4d4 !important;
 }
-/* 暴力锁定按钮：浅灰底，深黑字 */
-.btn-primary {
-  background-color: #d4d4d4 !important;
-  border: none !important;
+
+/* 终极杀招：给按钮设置浅灰底，文字强制为深黑色 */
+html body .btn-primary {
+  background-color: #e5e5e5 !important;
+  background-image: none !important;
+  border: 1px solid #e5e5e5 !important;
 }
-.btn-primary *,
-.btn-primary span,
-.btn-primary svg,
-.btn-primary svg path {
-  color: #1a1a1a !important;
-  fill: #1a1a1a !important;
+html body .btn-primary,
+html body .btn-primary span,
+html body .btn-primary svg,
+html body .btn-primary svg path {
+  color: #000000 !important;
+  fill: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* 悬停时（可选：变赤陶色白字） */
+html body .btn-primary:hover {
+  background-color: #e07a5f !important;
+  border-color: #e07a5f !important;
+}
+html body .btn-primary:hover,
+html body .btn-primary:hover span,
+html body .btn-primary:hover svg,
+html body .btn-primary:hover svg path {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
 }

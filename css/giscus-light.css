@@ -3,6 +3,8 @@ html, body {
   background-color: #faf9f6 !important;
   color: #323b48 !important;
 }
+
+/* 容器背景 */
 .gsc-comment-box, .gsc-reactions-menu, .gsc-popover {
   background-color: #faf9f6 !important;
   border-color: #e8e6e1 !important;
@@ -10,15 +12,24 @@ html, body {
 .gsc-comment-box-write, .gsc-comment-box-textarea {
   background-color: transparent !important;
 }
-/* 暴力锁定按钮：深灰底，纯白字 */
-.btn-primary {
+
+/* 终极杀招：给按钮设置深灰底，文字强制为纯白色 */
+html body .btn-primary {
   background-color: #323b48 !important;
-  border: none !important;
+  background-image: none !important;
+  border: 1px solid #323b48 !important;
 }
-.btn-primary *,
-.btn-primary span,
-.btn-primary svg,
-.btn-primary svg path {
+html body .btn-primary,
+html body .btn-primary span,
+html body .btn-primary svg,
+html body .btn-primary svg path {
   color: #ffffff !important;
   fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* 悬停时（可选：变赤陶色） */
+html body .btn-primary:hover {
+  background-color: #c45525 !important;
+  border-color: #c45525 !important;
 }
