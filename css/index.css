@@ -164,7 +164,12 @@ body {
 
 @media (max-width: 600px) {
   .home-decoration {
-    display: none;
+    max-width: 80px;
+    max-height: 80px;
+    opacity: 0.3;
+  }
+  [data-theme="dark"] .home-decoration {
+    opacity: 0.2;
   }
 }
 
