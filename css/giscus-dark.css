@@ -1,18 +1,21 @@
-/* 深色模式 - 从根本修复按钮文字颜色 */
-main {
-  --color-btn-bg: #d4d4d4 !important;
-  --color-btn-text: #1a1a1a !important;
-  --color-btn-hover-bg: #e07a5f !important;
-  --color-btn-hover-text: #ffffff !important;
-}
-
-html, body, * {
+/* 深色模式 */
+html, body {
+  background-color: #1a1a1a !important;
   color: #d4d4d4 !important;
   font-family: -apple-system, "PingFang SC", sans-serif !important;
 }
 
-html, body {
+.gsc-comment-box {
+  border: 1px solid #333333 !important;
+  border-radius: 8px !important;
   background-color: #1a1a1a !important;
+}
+.gsc-comment-box-write, .gsc-comment-box-textarea {
+  background-color: transparent !important;
+  color: #d4d4d4 !important;
+}
+.gsc-comment-box-tabs, .gsc-comment {
+  border-color: #333333 !important;
 }
 
 .gsc-reactions-menu, .gsc-popover {
@@ -23,15 +26,32 @@ html, body {
   z-index: 999 !important;
 }
 
-.gsc-comment-box {
-  border: 1px solid #333333 !important;
-  border-radius: 8px !important;
-  background-color: #1a1a1a !important;
+/* 暴力覆盖按钮：浅灰底，深黑字 */
+.btn-primary {
+  background-color: #d4d4d4 !important;
+  border: none !important;
+  border-radius: 4px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.btn-primary *,
+.btn-primary span,
+.btn-primary svg,
+.btn-primary svg path {
+  color: #1a1a1a !important;
+  fill: #1a1a1a !important;
+  stroke: #1a1a1a !important;
 }
 
-.gsc-comment-box-write, .gsc-comment-box-textarea {
-  background-color: transparent !important;
-  color: #d4d4d4 !important;
+.btn-primary:hover {
+  background-color: #e07a5f !important;
 }
-
-.gsc-comment-box-tabs, .gsc-comment { border-color: #333333 !important; }
+.btn-primary:hover *,
+.btn-primary:hover span,
+.btn-primary:hover svg,
+.btn-primary:hover svg path {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}

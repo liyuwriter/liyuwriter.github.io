@@ -5,17 +5,14 @@ layout: default
   <article>
     <h1 style="font-size: 28px; font-weight: 600; color: var(--text-main); margin-bottom: 10px; line-height: 1.4;">{{ page.title }}</h1>
     
-    <!-- 日期、标签与阅读量 -->
     <div class="post-meta" style="margin-bottom: 40px; font-size: 14px; color: var(--text-light);">
       <span>发布于 {{ page.date | date: "%Y年%m月%d日" }}</span>
-      
       {% if page.tags.size > 0 %}
         <span style="margin: 0 8px;">·</span>
         {% for tag in page.tags %}
           <a href="/tags/#{{ tag }}" class="text-tag">#{{ tag }}</a>
         {% endfor %}
       {% endif %}
-
       <span class="view-count" style="margin-left: 15px;">
         阅读量 <span data-hk-page="current"> - </span> 次
       </span>
@@ -27,20 +24,32 @@ layout: default
   </article>
 
   <div class="giscus-container" style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border-color);">
-    <script src="https://giscus.app/client.js"
-            data-repo="liyuwriter/liyuwriter.github.io"
-            data-repo-id="R_kgDOVbj_NQ"
-            data-category="Announcements"
-            data-category-id="DIC_kwDOVbj_Nc4DJ9sd"
-            data-mapping="pathname"
-            data-strict="0"
-            data-reactions-enabled="1"
-            data-emit-metadata="0"
-            data-input-position="bottom"
-            data-theme="css/giscus-light.css"
-            data-lang="zh-CN"
-            crossorigin="anonymous"
-            async>
+    <!-- 动态注入 Giscus -->
+    <script>
+      (function() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const themeUrl = isDark 
+          ? 'https://liyuwriter.github.io/css/giscus-dark.css' 
+          : 'https://liyuwriter.github.io/css/giscus-light.css';
+          
+        const script = document.createElement('script');
+        script.src = 'https://giscus.app/client.js';
+        script.setAttribute('data-repo', 'liyuwriter/liyuwriter.github.io');
+        script.setAttribute('data-repo-id', 'R_kgDOVbj_NQ');
+        script.setAttribute('data-category', 'Announcements');
+        script.setAttribute('data-category-id', 'DIC_kwDOVbj_Nc4DJ9sd');
+        script.setAttribute('data-mapping', 'pathname');
+        script.setAttribute('data-strict', '0');
+        script.setAttribute('data-reactions-enabled', '1');
+        script.setAttribute('data-emit-metadata', '0');
+        script.setAttribute('data-input-position', 'bottom');
+        script.setAttribute('data-theme', themeUrl);
+        script.setAttribute('data-lang', 'zh-CN');
+        script.setAttribute('crossorigin', 'anonymous');
+        script.async = true;
+        
+        document.querySelector('.giscus-container').appendChild(script);
+      })();
     </script>
   </div>
 </div>
