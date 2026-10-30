@@ -29,7 +29,9 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
       - name: Create counter config
-        run: mkdir -p _data && echo 'token: "'"$COUNTER_TOKEN"'"' > _data/counter.yml
+        run: |
+          mkdir -p _data
+          echo "token: \"${COUNTER_TOKEN}\"" > _data/counter.yml
         env:
           COUNTER_TOKEN: ${{ secrets.COUNTER_TOKEN }}
       - name: Build with Jekyll
