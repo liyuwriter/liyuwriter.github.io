@@ -269,3 +269,37 @@ article h1 {
   margin-bottom: 50px;
   justify-content: flex-start;
 }
+
+/* 极致优雅的纯文本标签 */
+.text-tag {
+  color: var(--text-light) !important; /* 使用辅助灰，不抢正文风头 */
+  text-decoration: none !important;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  margin-right: 8px; /* 标签之间留一点空隙 */
+  transition: color 0.2s ease;
+}
+
+.text-tag:hover {
+  color: var(--hover-color) !important; /* 悬停时变成温润的赤陶色 */
+}
+
+/* 顺便把标签汇总页（tags.html）的胶囊样式也统一 */
+.tag-link {
+  display: inline-block;
+  padding: 4px 12px;
+  color: var(--text-light) !important;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  text-decoration: none !important;
+  font-size: 13px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+.tag-link:hover {
+  border-color: var(--hover-color);
+  color: var(--hover-color) !important;
+}
