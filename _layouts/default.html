@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <link rel="stylesheet" href="/css/index.css">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
+  {% seo %}
   <script>
     if (localStorage.getItem('theme') === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/hit-kounter@0.1.0/dist/hit-kounter.js"></script>
 </head>
 <body>
   <nav class="navbar">
@@ -27,68 +27,53 @@
       <button id="theme-toggle" aria-label="切换深色/浅色模式">🌙</button>
     </div>
   </nav>
-  
+
   {{ content }}
-  
+
   <footer class="footer">
     &copy; {{ site.time | date: '%Y' }} {{ site.title }}. Powered by Jekyll.
   </footer>
 
   <script>
-    const toggleBtn = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-    // 绝对路径
-    const cssLight = 'https://liyuwriter.github.io/css/giscus-light.css';
-    const cssDark = 'https://liyuwriter.github.io/css/giscus-dark.css';
+    var toggleBtn = document.getElementById('theme-toggle');
+    var htmlEl = document.documentElement;
+    var cssLight = 'https://liyuwriter.github.io/css/giscus-light.css';
+    var cssDark = 'https://liyuwriter.github.io/css/giscus-dark.css';
 
     function updateIcon() {
-      toggleBtn.textContent = htmlElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+      toggleBtn.textContent = htmlEl.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
     }
     updateIcon();
 
     function syncGiscusTheme(theme) {
-      const iframe = document.querySelector('iframe.giscus-frame');
-      if (iframe) {
-        const cssUrl = theme === 'dark' ? cssDark : cssLight;
-        iframe.contentWindow.postMessage(
-          { giscus: { setConfig: { theme: cssUrl } } },
-          'https://giscus.app'
-        );
-      }
+      var iframe = document.querySelector('iframe.giscus-frame');
+      if (!iframe) return;
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: theme === 'dark' ? cssDark : cssLight } } },
+        'https://giscus.app'
+      );
     }
 
-    // 极其暴力的轮询机制：因为 iframe 加载有延迟，我们每秒确认一次，直到同步成功
-    function forceSync() {
-      let attempts = 0;
-      const interval = setInterval(() => {
-        syncGiscusTheme(htmlElement.getAttribute('data-theme') || 'light');
-        attempts++;
-        if (attempts > 10) clearInterval(interval); // 最多试 10 次（10秒）
-      }, 1000);
-    }
-
-    window.addEventListener('load', forceSync);
+    // 监听 Giscus iframe 加载完成的消息，精确同步一次
+    window.addEventListener('message', function(e) {
+      if (e.origin !== 'https://giscus.app') return;
+      if (!(typeof e.data === 'object' && e.data.giscus)) return;
+      var currentTheme = htmlEl.getAttribute('data-theme') || 'light';
+      syncGiscusTheme(currentTheme);
+    });
 
     toggleBtn.addEventListener('click', function() {
-      let newTheme;
-      if (htmlElement.getAttribute('data-theme') === 'dark') {
-        htmlElement.removeAttribute('data-theme');
+      var isDark = htmlEl.getAttribute('data-theme') === 'dark';
+      var newTheme = isDark ? 'light' : 'dark';
+      if (isDark) {
+        htmlEl.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
-        newTheme = 'light';
       } else {
-        htmlElement.setAttribute('data-theme', 'dark');
+        htmlEl.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
-        newTheme = 'dark';
       }
       updateIcon();
-      // 切换时立即发送一次，并在随后的几秒内持续发送确保覆盖
       syncGiscusTheme(newTheme);
-      let count = 0;
-      const reSync = setInterval(() => {
-        syncGiscusTheme(newTheme);
-        count++;
-        if (count > 5) clearInterval(reSync);
-      }, 500);
     });
   </script>
 </body>

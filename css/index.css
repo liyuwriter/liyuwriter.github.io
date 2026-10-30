@@ -1,21 +1,22 @@
 :root {
-  --bg-color: #fcfcfc;         
-  --text-main: #37352f;        
-  --text-light: #9e9a93;       
-  --hover-color: #c45525;      
-  --border-color: #ebebeb;     
+  --bg-color: #fcfcfc;
+  --text-main: #37352f;
+  --text-light: #9e9a93;
+  --hover-color: #c45525;
+  --border-color: #ebebeb;
+  --font-serif: "Georgia", "Songti SC", "PingFang SC", serif;
+  --font-mono: "Menlo", "Consolas", monospace;
+  --font-sans: -apple-system, "Helvetica Neue", sans-serif;
 }
 
-/* 深色模式变量（当 html 标签带有 data-theme="dark" 时生效） */
 [data-theme="dark"] {
-  --bg-color: #1a1a1a;         
-  --text-main: #d4d4d4;        
-  --text-light: #888888;       
-  --hover-color: #e07a5f;      
-  --border-color: #333333;     
+  --bg-color: #1a1a1a;
+  --text-main: #d4d4d4;
+  --text-light: #888888;
+  --hover-color: #e07a5f;
+  --border-color: #333333;
 }
 
-/* 增加平滑切换动画 */
 body, .navbar, .post-item, .footer, a {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
@@ -24,7 +25,7 @@ body {
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-main);
-  font-family: "Georgia", "Songti SC", "PingFang SC", serif; 
+  font-family: var(--font-serif);
   line-height: 1.8;
   -webkit-font-smoothing: antialiased;
   display: flex;
@@ -45,7 +46,7 @@ body {
   justify-content: space-between;
   align-items: flex-end;
   padding-top: 64px;
-  padding-bottom: 24px;
+  padding-bottom: 10px;
   margin-bottom: 0;
 }
 
@@ -60,7 +61,7 @@ body {
   font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.4px;
-  color: var(--text-title);
+  color: var(--text-main);
   text-decoration: none;
   margin-bottom: 6px;
   transition: opacity 0.2s;
@@ -90,10 +91,14 @@ body {
 }
 .navbar-links a:hover { color: var(--hover-color); }
 
-/* 切换按钮样式 */
 #theme-toggle {
-  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
   border: none;
+  outline: none;
+  box-shadow: none;
   cursor: pointer;
   font-size: 16px;
   margin-left: 24px;
@@ -111,11 +116,19 @@ body {
   margin-top: 0;
 }
 
+/* 首页 */
+.home-container {
+  margin-top: 40px;
+}
+
 .post-item {
   padding: 24px 0;
   border-bottom: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
+}
+.post-item:first-child {
+  padding-top: 10px;
 }
 .post-item:last-child { border-bottom: none; }
 
@@ -150,6 +163,157 @@ body {
   margin: 0;
 }
 
+/* 文章详情页 */
+.post-container {
+  margin-top: 40px;
+}
+
+.post-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  line-height: 1.4;
+  letter-spacing: -0.4px;
+}
+
+.post-header-meta {
+  margin-bottom: 40px;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.post-body {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-main);
+  opacity: 0.9;
+}
+
+.giscus-container {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* 页面（关于等） */
+.page-container {
+  margin-top: 20px;
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-top: 0;
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+}
+
+.page-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-main);
+  opacity: 0.9;
+}
+
+/* 标签 */
+.text-tag {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  margin-right: 8px;
+  transition: color 0.2s ease;
+}
+.text-tag:hover {
+  color: var(--hover-color);
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 50px;
+  justify-content: flex-start;
+}
+
+.tag-link {
+  display: inline-block;
+  padding: 4px 12px;
+  color: var(--text-light);
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  margin-right: 8px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+.tag-link:hover {
+  border-color: var(--hover-color);
+  color: var(--hover-color);
+}
+
+.tag-section {
+  margin-bottom: 40px;
+}
+
+.tag-section h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-family: var(--font-serif);
+}
+
+.tag-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag-section li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: baseline;
+}
+
+.tag-section .tag-date {
+  color: var(--text-light);
+  font-size: 13px;
+  font-family: var(--font-mono);
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
+.tag-section .tag-post-link {
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 16px;
+  border-bottom: 1px dashed transparent;
+  transition: border-color 0.2s;
+}
+.tag-section .tag-post-link:hover {
+  border-bottom-color: var(--hover-color);
+}
+
+/* 阅读量 */
+.view-count {
+  font-family: var(--font-sans);
+  color: var(--text-light);
+  margin-left: 15px;
+}
+.view-count span[data-hk-page] {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* 底部 */
 .footer {
   text-align: center;
   padding: 48px 0 36px;
@@ -162,12 +326,19 @@ body {
 
 article h1 {
   font-family: var(--font-serif);
-  font-size: 28px !important;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 600;
   color: var(--text-main);
   margin-bottom: 12px;
   line-height: 1.4;
   letter-spacing: -0.4px;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  color: #999;
+  padding: 50px 0;
 }
 
 @media (max-width: 600px) {
@@ -180,137 +351,5 @@ article h1 {
   }
   .navbar-links a { margin-left: 0; margin-right: 20px; }
   .navbar-links { width: 100%; justify-content: flex-start; }
-  #theme-toggle { margin-left: auto; } /* 手机端将按钮放最右边 */
-}
-
-/* 极限压缩导航栏与文章列表的间距 */
-.navbar {
-  padding-bottom: 10px !important;
-}
-
-.container {
-  margin-top: 0 !important;
-}
-
-.post-item:first-child {
-  padding-top: 10px !important;
-}
-
-/* 彻底干掉按钮的所有默认样式（黑框、背景等） */
-#theme-toggle {
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
-  background: transparent !important;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  cursor: pointer;
-  font-size: 16px;
-  margin-left: 24px;
-  padding: 0;
-  opacity: 0.7;
-  transition: opacity 0.2s, transform 0.2s;
-}
-#theme-toggle:hover {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-/* 统一“关于”页面（page）和文章详情页（post）的排版 */
-.page-title {
-  font-family: var(--font-serif);
-  font-size: 24px !important;       /* 缩小标题字号 */
-  font-weight: 600 !important;
-  color: var(--text-main);
-  margin-top: 0;
-  margin-bottom: 24px;              /* 收紧标题和正文的间距 */
-  letter-spacing: -0.3px;
-}
-
-.page-content {
-  font-size: 16px;                  /* 统一正文字号 */
-  line-height: 1.8;
-  color: var(--text-main);
-  opacity: 0.9;                     /* 稍微柔和一点的文字颜色 */
-}
-
-/* 把文章详情页的 h1 也顺便统一一下，防止以后又变大 */
-article h1 {
-  font-size: 24px !important;
-}
-
-/* 标签胶囊样式 */
-.post-tag, .tag-link {
-  display: inline-block;
-  padding: 2px 10px;
-  background-color: transparent;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  text-decoration: none;
-  color: var(--text-light);
-  font-size: 13px;
-  font-family: var(--font-sans);
-  transition: all 0.2s;
-}
-
-/* 悬停时变色 */
-.post-tag:hover, .tag-link:hover {
-  background-color: var(--hover-color);
-  border-color: var(--hover-color);
-  color: #fff;
-}
-
-/* 标签云居中 */
-.tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 50px;
-  justify-content: flex-start;
-}
-
-/* 极致优雅的纯文本标签 */
-.text-tag {
-  color: var(--text-light) !important; /* 使用辅助灰，不抢正文风头 */
-  text-decoration: none !important;
-  font-size: 13px;
-  font-family: var(--font-sans);
-  margin-right: 8px; /* 标签之间留一点空隙 */
-  transition: color 0.2s ease;
-}
-
-.text-tag:hover {
-  color: var(--hover-color) !important; /* 悬停时变成温润的赤陶色 */
-}
-
-/* 顺便把标签汇总页（tags.html）的胶囊样式也统一 */
-.tag-link {
-  display: inline-block;
-  padding: 4px 12px;
-  color: var(--text-light) !important;
-  background-color: transparent;
-  border: 1px solid var(--border-color);
-  border-radius: 20px;
-  text-decoration: none !important;
-  font-size: 13px;
-  margin-right: 8px;
-  margin-bottom: 8px;
-  transition: all 0.2s ease;
-}
-
-.tag-link:hover {
-  border-color: var(--hover-color);
-  color: var(--hover-color) !important;
-}
-
-/* 阅读量样式 */
-.view-count {
-  font-family: var(--font-sans);
-  color: var(--text-light);
-}
-.view-count span[data-hk-page] {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  color: var(--text-main);
+  #theme-toggle { margin-left: auto; }
 }

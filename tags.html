@@ -11,17 +11,13 @@ permalink: /tags/
 </div>
 
 {% for tag in site.tags %}
-  <div class="tag-section" style="margin-bottom: 40px;">
-    <h2 id="{{ tag[0] }}" style="font-size: 20px; font-weight: 600; margin-bottom: 15px; font-family: var(--font-serif);">{{ tag[0] }}</h2>
-    <ul style="list-style: none; padding: 0; margin: 0;">
+  <div class="tag-section">
+    <h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
+    <ul>
       {% for post in tag[1] %}
-        <li style="margin-bottom: 10px; display: flex; align-items: baseline;">
-          <span style="color: var(--text-light); font-size: 13px; font-family: var(--font-mono); margin-right: 15px; white-space: nowrap;">
-            {{ post.date | date: "%Y-%m-%d" }}
-          </span>
-          <a href="{{ post.url }}" style="color: var(--text-main); text-decoration: none; font-size: 16px; border-bottom: 1px dashed transparent; transition: border-color 0.2s;">
-            {{ post.title }}
-          </a>
+        <li>
+          <span class="tag-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          <a href="{{ post.url }}" class="tag-post-link">{{ post.title }}</a>
         </li>
       {% endfor %}
     </ul>
