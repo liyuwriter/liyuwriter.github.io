@@ -456,9 +456,7 @@ body {
   left: 0;
   bottom: 0;
   width: 100vw;
-  height: 50vh;
-  object-fit: cover;
-  object-position: bottom;
+  height: auto;
   opacity: 0.12;
   z-index: 0;
   pointer-events: none;
