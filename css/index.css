@@ -453,11 +453,12 @@ body {
 
 .not-found-cat {
   position: fixed;
-  top: 0;
   left: 0;
+  bottom: 0;
   width: 100vw;
-  height: 100vh;
+  height: 70vh;
   object-fit: cover;
+  object-position: bottom;
   opacity: 0.12;
   z-index: 0;
   pointer-events: none;
