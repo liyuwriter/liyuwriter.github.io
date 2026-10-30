@@ -14,7 +14,7 @@ layout: default
         {% endfor %}
       {% endif %}
       <span class="view-count">
-        阅读量 <span id="busuanzi_value_page_pv">-</span> 次
+        阅读量 <span id="page-view-count">-</span> 次
       </span>
     </div>
 
@@ -49,4 +49,7 @@ layout: default
   </div>
 </div>
 
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+{% if site.data.counter.token %}
+<script>window.GITHUB_COUNTER_TOKEN="{{ site.data.counter.token }}";</script>
+{% endif %}
+<script src="/assets/js/counter.js" defer></script>

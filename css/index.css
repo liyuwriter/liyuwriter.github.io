@@ -307,7 +307,7 @@ body {
   color: var(--text-light);
   margin-left: 15px;
 }
-.view-count span#busuanzi_value_page_pv {
+.view-count span#page-view-count {
   font-family: var(--font-mono);
   font-weight: 600;
   color: var(--text-main);

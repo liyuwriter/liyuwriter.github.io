@@ -1,0 +1,4 @@
+# 阅读量计数器配置
+# 复制此文件为 counter.yml 并填入你的 token
+# counter.yml 不会被 git 追踪
+token: ""
