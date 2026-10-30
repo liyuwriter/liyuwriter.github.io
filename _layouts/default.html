@@ -19,6 +19,7 @@
     </div>
     <div class="navbar-links">
       <a href="/">文章</a>
+      <a href="/tags/">标签</a>
       <a href="/about/">关于</a>
       <a href="/feed.xml" target="_blank" title="RSS 订阅">RSS</a>
       <a href="https://github.com/liyuwriter" target="_blank">GitHub</a>
@@ -45,15 +46,35 @@
     }
     updateIcon();
 
+    // 同步 Giscus 评论区主题
+    function syncGiscusTheme(theme) {
+      const iframe = document.querySelector('iframe.giscus-frame');
+      if (iframe) {
+        // 指向我们自定义的 CSS URL
+        const cssUrl = theme === 'dark' 
+          ? 'https://liyuwriter.github.io/css/giscus-dark.css' 
+          : 'https://liyuwriter.github.io/css/giscus-light.css';
+          
+        iframe.contentWindow.postMessage(
+          { giscus: { setConfig: { theme: cssUrl } } },
+          'https://giscus.app'
+        );
+      }
+    }
+
     toggleBtn.addEventListener('click', function() {
+      let newTheme;
       if (htmlElement.getAttribute('data-theme') === 'dark') {
         htmlElement.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
+        newTheme = 'light';
       } else {
         htmlElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
+        newTheme = 'dark';
       }
       updateIcon();
+      syncGiscusTheme(newTheme);
     });
   </script>
 </body>

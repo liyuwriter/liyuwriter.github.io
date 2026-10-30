@@ -1,6 +1,7 @@
 ---
 layout: page
 title: 关于我
+permalink: /about/
 ---
 
 你好，我是 Liyu，一名文字工作者/创作者。

@@ -216,3 +216,26 @@ article h1 {
   opacity: 1;
   transform: scale(1.1);
 }
+
+/* 统一“关于”页面（page）和文章详情页（post）的排版 */
+.page-title {
+  font-family: var(--font-serif);
+  font-size: 24px !important;       /* 缩小标题字号 */
+  font-weight: 600 !important;
+  color: var(--text-main);
+  margin-top: 0;
+  margin-bottom: 24px;              /* 收紧标题和正文的间距 */
+  letter-spacing: -0.3px;
+}
+
+.page-content {
+  font-size: 16px;                  /* 统一正文字号 */
+  line-height: 1.8;
+  color: var(--text-main);
+  opacity: 0.9;                     /* 稍微柔和一点的文字颜色 */
+}
+
+/* 把文章详情页的 h1 也顺便统一一下，防止以后又变大 */
+article h1 {
+  font-size: 24px !important;
+}

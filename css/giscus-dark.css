@@ -1,0 +1,36 @@
+/* 强制整个 Giscus 容器背景实色化，防止穿透 */
+html, body {
+  background-color: #1a1a1a !important;
+  color: #d4d4d4 !important;
+  font-family: -apple-system, "PingFang SC", sans-serif !important;
+}
+
+/* 强制表情弹窗背景实色 */
+.gsc-reactions-menu, .gsc-popover {
+  background-color: #1a1a1a !important;
+  border: 1px solid #333333 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+  z-index: 999 !important;
+}
+
+/* 输入框整体容器 */
+.gsc-comment-box {
+  border: 1px solid #333333 !important;
+  border-radius: 8px !important;
+  background-color: #1a1a1a !important;
+}
+
+/* 输入框内部 */
+.gsc-comment-box-write, .gsc-comment-box-textarea {
+  background-color: transparent !important;
+}
+
+/* 按钮 */
+.btn-primary { 
+  background-color: #d4d4d4 !important; 
+  color: #1a1a1a !important; 
+  border: none !important; 
+  border-radius: 4px !important; 
+}
+.btn-primary:hover { background-color: #e07a5f !important; color: #fff !important; }
