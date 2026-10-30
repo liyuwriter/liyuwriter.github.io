@@ -17,6 +17,22 @@
   --border-color: #333333;
 }
 
+/* 跳到正文 */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--hover-color);
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 100;
+  font-size: 14px;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 body, .navbar, .post-item, .footer, a {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
@@ -97,7 +113,6 @@ body {
   appearance: none;
   background: transparent;
   border: none;
-  outline: none;
   box-shadow: none;
   cursor: pointer;
   font-size: 16px;
@@ -109,6 +124,10 @@ body {
 #theme-toggle:hover {
   opacity: 1;
   transform: scale(1.1);
+}
+#theme-toggle:focus-visible {
+  outline: 2px solid var(--hover-color);
+  outline-offset: 2px;
 }
 
 .container {
@@ -328,18 +347,6 @@ body {
 }
 .tag-section .tag-post-link:hover {
   border-bottom-color: var(--hover-color);
-}
-
-/* 阅读量 */
-.view-count {
-  font-family: var(--font-sans);
-  color: var(--text-light);
-  margin-left: 15px;
-}
-.view-count span#page-view-count {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  color: var(--text-main);
 }
 
 /* Markdown 排版 */
