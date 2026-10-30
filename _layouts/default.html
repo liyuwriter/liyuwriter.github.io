@@ -10,6 +10,8 @@
       document.documentElement.setAttribute('data-theme', 'dark');
     }
   </script>
+  <!-- Hit Kounter 阅读量统计脚本 -->
+  <script src="https://cdn.jsdelivr.net/npm/hit-kounter@0.1.0/dist/hit-kounter.js"></script>
 </head>
 <body>
   <nav class="navbar">
@@ -36,31 +38,30 @@
   <script>
     const toggleBtn = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
-    
+    const cssLight = 'css/giscus-light.css';
+    const cssDark = 'css/giscus-dark.css';
+
     function updateIcon() {
-      if (htmlElement.getAttribute('data-theme') === 'dark') {
-        toggleBtn.textContent = '☀️';
-      } else {
-        toggleBtn.textContent = '🌙';
-      }
+      toggleBtn.textContent = htmlElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
     }
     updateIcon();
 
-    // 同步 Giscus 评论区主题
     function syncGiscusTheme(theme) {
       const iframe = document.querySelector('iframe.giscus-frame');
       if (iframe) {
-        // 指向我们自定义的 CSS URL
-        const cssUrl = theme === 'dark' 
-          ? 'https://liyuwriter.github.io/css/giscus-dark.css' 
-          : 'https://liyuwriter.github.io/css/giscus-light.css';
-          
+        const cssUrl = theme === 'dark' ? cssDark : cssLight;
         iframe.contentWindow.postMessage(
           { giscus: { setConfig: { theme: cssUrl } } },
           'https://giscus.app'
         );
       }
     }
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        syncGiscusTheme(htmlElement.getAttribute('data-theme') || 'light');
+      }, 1000);
+    });
 
     toggleBtn.addEventListener('click', function() {
       let newTheme;

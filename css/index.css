@@ -303,3 +303,14 @@ article h1 {
   border-color: var(--hover-color);
   color: var(--hover-color) !important;
 }
+
+/* 阅读量样式 */
+.view-count {
+  font-family: var(--font-sans);
+  color: var(--text-light);
+}
+.view-count span[data-hk-page] {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-main);
+}
