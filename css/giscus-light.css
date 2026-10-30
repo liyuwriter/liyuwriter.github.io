@@ -1,4 +1,11 @@
-/* 浅色模式 */
+/* 浅色模式 - 从根本修复按钮文字颜色 */
+main {
+  --color-btn-bg: #323b48 !important;
+  --color-btn-text: #ffffff !important;
+  --color-btn-hover-bg: #c45525 !important;
+  --color-btn-hover-text: #ffffff !important;
+}
+
 html, body {
   background-color: #faf9f6 !important;
   color: #323b48 !important;
@@ -21,26 +28,4 @@ html, body {
 
 .gsc-comment-box-write, .gsc-comment-box-textarea {
   background-color: transparent !important;
-}
-
-/* 强制按钮背景为深色，内部所有文字、SVG 图标为纯白 */
-.btn-primary { 
-  background-color: #323b48 !important; 
-  border: none !important; 
-  border-radius: 4px !important; 
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-.btn-primary, 
-.btn-primary *, 
-.btn-primary span, 
-.btn-primary svg,
-.btn-primary svg path { 
-  color: #ffffff !important; 
-  fill: #ffffff !important; 
-}
-
-.btn-primary:hover { 
-  background-color: #c45525 !important; 
 }

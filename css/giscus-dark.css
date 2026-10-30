@@ -1,4 +1,11 @@
-/* 深色模式 */
+/* 深色模式 - 从根本修复按钮文字颜色 */
+main {
+  --color-btn-bg: #d4d4d4 !important;
+  --color-btn-text: #1a1a1a !important;
+  --color-btn-hover-bg: #e07a5f !important;
+  --color-btn-hover-text: #ffffff !important;
+}
+
 html, body, * {
   color: #d4d4d4 !important;
   font-family: -apple-system, "PingFang SC", sans-serif !important;
@@ -25,35 +32,6 @@ html, body {
 .gsc-comment-box-write, .gsc-comment-box-textarea {
   background-color: transparent !important;
   color: #d4d4d4 !important;
-}
-
-/* 核心修复：强制按钮背景为浅灰，内部所有文字、SVG 图标为深黑 */
-.btn-primary { 
-  background-color: #d4d4d4 !important; 
-  border: none !important; 
-  border-radius: 4px !important; 
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-.btn-primary, 
-.btn-primary *, 
-.btn-primary span, 
-.btn-primary svg,
-.btn-primary svg path { 
-  color: #1a1a1a !important; 
-  fill: #1a1a1a !important; 
-}
-
-.btn-primary:hover { 
-  background-color: #e07a5f !important; 
-}
-.btn-primary:hover,
-.btn-primary:hover *,
-.btn-primary:hover svg,
-.btn-primary:hover svg path {
-  color: #ffffff !important;
-  fill: #ffffff !important;
 }
 
 .gsc-comment-box-tabs, .gsc-comment { border-color: #333333 !important; }
