@@ -451,30 +451,23 @@ body {
   position: relative;
 }
 
-.sleeping-cat {
-  position: fixed;
-  right: 30px;
-  bottom: 80px;
-  width: 48px;
-  height: 38px;
-  animation: breathe 3s ease-in-out infinite;
-}
-
-@keyframes breathe {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
-}
-
 .not-found-cat {
   position: fixed;
+  top: 0;
   left: 0;
-  bottom: 0;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  opacity: 0.15;
-  z-index: -1;
+  opacity: 0.12;
+  z-index: 0;
   pointer-events: none;
+}
+
+.not-found-title,
+.not-found-text,
+.not-found-link {
+  position: relative;
+  z-index: 1;
 }
 
 .not-found-title {
