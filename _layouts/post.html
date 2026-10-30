@@ -8,7 +8,7 @@ layout: default
     <div class="post-header-meta">
       <span>发布于 {{ page.date | date: "%Y年%m月%d日" }}</span>
       {% if page.tags.size > 0 %}
-        <span style="margin: 0 8px;">·</span>
+        <span class="meta-separator">·</span>
         {% for tag in page.tags %}
           <a href="/tags/#{{ tag }}" class="text-tag">#{{ tag }}</a>
         {% endfor %}

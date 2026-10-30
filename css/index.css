@@ -184,6 +184,10 @@ body {
   color: var(--text-light);
 }
 
+.meta-separator {
+  margin: 0 8px;
+}
+
 .post-body {
   font-size: 16px;
   line-height: 1.8;
@@ -313,6 +317,128 @@ body {
   color: var(--text-main);
 }
 
+/* Markdown 排版 */
+.post-body h2,
+.page-content h2 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 48px 0 16px;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+
+.post-body h3,
+.page-content h3 {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 600;
+  margin: 36px 0 12px;
+  line-height: 1.4;
+}
+
+.post-body p,
+.page-content p {
+  margin: 0 0 20px;
+}
+
+.post-body a,
+.page-content a {
+  color: var(--hover-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.post-body a:hover,
+.page-content a:hover {
+  border-bottom-color: var(--hover-color);
+}
+
+.post-body blockquote,
+.page-content blockquote {
+  margin: 20px 0;
+  padding: 8px 20px;
+  border-left: 3px solid var(--border-color);
+  color: var(--text-light);
+}
+
+.post-body code,
+.page-content code {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  padding: 2px 6px;
+  background-color: var(--border-color);
+  border-radius: 3px;
+}
+
+.post-body pre,
+.page-content pre {
+  margin: 20px 0;
+  padding: 16px 20px;
+  overflow-x: auto;
+  background-color: var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.post-body pre code,
+.page-content pre code {
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+
+.post-body img,
+.page-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+.post-body ul,
+.page-content ul,
+.post-body ol,
+.page-content ol {
+  margin: 0 0 20px;
+  padding-left: 24px;
+}
+
+.post-body li,
+.page-content li {
+  margin-bottom: 6px;
+}
+
+.post-body hr,
+.page-content hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 40px 0;
+}
+
+.post-body table,
+.page-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.post-body th,
+.page-content th,
+.post-body td,
+.page-content td {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.post-body th,
+.page-content th {
+  font-weight: 600;
+  background-color: var(--border-color);
+}
+
 /* 底部 */
 .footer {
   text-align: center;
@@ -322,16 +448,6 @@ body {
   font-size: 12px;
   letter-spacing: 0.5px;
   margin-top: auto;
-}
-
-article h1 {
-  font-family: var(--font-serif);
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--text-main);
-  margin-bottom: 12px;
-  line-height: 1.4;
-  letter-spacing: -0.4px;
 }
 
 /* 空状态 */

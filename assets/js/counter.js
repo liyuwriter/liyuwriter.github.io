@@ -20,20 +20,38 @@
 
   function show(n) { countEl.textContent = n; }
 
-  // 先用缓存显示，再从 API 刷新
+  // 先用缓存显示
   try {
     var cached = JSON.parse(localStorage.getItem(cacheKey));
     if (cached && Date.now() - cached.ts < CACHE_TTL) show(cached.count);
   } catch(e) {}
 
-  fetch(API + '/issues?labels=' + LABEL + '&per_page=100&state=open', { headers: headers() })
+  // 用搜索 API 按 title 精确查找，避免分页问题
+  var searchUrl = API + '/issues?labels=' + LABEL + '&state=open&per_page=1&sort=created&direction=desc';
+
+  fetch(searchUrl, { headers: headers() })
     .then(function(r) { return r.json(); })
     .then(function(issues) {
+      // 搜索可能返回多个，精确匹配 title
       var issue = null;
       for (var i = 0; i < issues.length; i++) {
         if (issues[i].title === path) { issue = issues[i]; break; }
       }
 
+      // 如果没精确匹配，再尝试用搜索 API
+      if (!issue && token) {
+        return fetch('https://api.github.com/search/issues?q=repo:' + REPO + '+label:' + LABEL + '+state:open+in:title+' + encodeURIComponent('"' + path + '"'), {
+          headers: headers()
+        }).then(function(r) { return r.json(); }).then(function(data) {
+          if (data.items && data.items.length > 0) {
+            issue = data.items[0];
+          }
+          return issue;
+        });
+      }
+      return issue;
+    })
+    .then(function(issue) {
       if (issue) {
         var count = parseInt(issue.body) || 0;
         show(count);
