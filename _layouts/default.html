@@ -10,7 +10,6 @@
       document.documentElement.setAttribute('data-theme', 'dark');
     }
   </script>
-  <!-- Hit Kounter 阅读量统计脚本 -->
   <script src="https://cdn.jsdelivr.net/npm/hit-kounter@0.1.0/dist/hit-kounter.js"></script>
 </head>
 <body>
@@ -38,8 +37,9 @@
   <script>
     const toggleBtn = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
-    const cssLight = 'css/giscus-light.css';
-    const cssDark = 'css/giscus-dark.css';
+    // 绝对路径
+    const cssLight = 'https://liyuwriter.github.io/css/giscus-light.css';
+    const cssDark = 'https://liyuwriter.github.io/css/giscus-dark.css';
 
     function updateIcon() {
       toggleBtn.textContent = htmlElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
@@ -57,11 +57,17 @@
       }
     }
 
-    window.addEventListener('load', () => {
-      setTimeout(() => {
+    // 极其暴力的轮询机制：因为 iframe 加载有延迟，我们每秒确认一次，直到同步成功
+    function forceSync() {
+      let attempts = 0;
+      const interval = setInterval(() => {
         syncGiscusTheme(htmlElement.getAttribute('data-theme') || 'light');
+        attempts++;
+        if (attempts > 10) clearInterval(interval); // 最多试 10 次（10秒）
       }, 1000);
-    });
+    }
+
+    window.addEventListener('load', forceSync);
 
     toggleBtn.addEventListener('click', function() {
       let newTheme;
@@ -75,7 +81,14 @@
         newTheme = 'dark';
       }
       updateIcon();
+      // 切换时立即发送一次，并在随后的几秒内持续发送确保覆盖
       syncGiscusTheme(newTheme);
+      let count = 0;
+      const reSync = setInterval(() => {
+        syncGiscusTheme(newTheme);
+        count++;
+        if (count > 5) clearInterval(reSync);
+      }, 500);
     });
   </script>
 </body>

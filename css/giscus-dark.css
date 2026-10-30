@@ -2,38 +2,19 @@
 html, body {
   background-color: #1a1a1a !important;
   color: #d4d4d4 !important;
-  font-family: -apple-system, "PingFang SC", sans-serif !important;
 }
-
-.gsc-comment-box {
-  border: 1px solid #333333 !important;
-  border-radius: 8px !important;
+.gsc-comment-box, .gsc-reactions-menu, .gsc-popover {
   background-color: #1a1a1a !important;
+  border-color: #333333 !important;
 }
 .gsc-comment-box-write, .gsc-comment-box-textarea {
   background-color: transparent !important;
   color: #d4d4d4 !important;
 }
-.gsc-comment-box-tabs, .gsc-comment {
-  border-color: #333333 !important;
-}
-
-.gsc-reactions-menu, .gsc-popover {
-  background-color: #1a1a1a !important;
-  border: 1px solid #333333 !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
-  z-index: 999 !important;
-}
-
-/* 暴力覆盖按钮：浅灰底，深黑字 */
+/* 暴力锁定按钮：浅灰底，深黑字 */
 .btn-primary {
   background-color: #d4d4d4 !important;
   border: none !important;
-  border-radius: 4px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
 }
 .btn-primary *,
 .btn-primary span,
@@ -41,17 +22,4 @@ html, body {
 .btn-primary svg path {
   color: #1a1a1a !important;
   fill: #1a1a1a !important;
-  stroke: #1a1a1a !important;
-}
-
-.btn-primary:hover {
-  background-color: #e07a5f !important;
-}
-.btn-primary:hover *,
-.btn-primary:hover span,
-.btn-primary:hover svg,
-.btn-primary:hover svg path {
-  color: #ffffff !important;
-  fill: #ffffff !important;
-  stroke: #ffffff !important;
 }

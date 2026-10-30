@@ -24,10 +24,10 @@ layout: default
   </article>
 
   <div class="giscus-container" style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--border-color);">
-    <!-- 动态注入 Giscus -->
     <script>
       (function() {
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        // 必须使用绝对路径！
         const themeUrl = isDark 
           ? 'https://liyuwriter.github.io/css/giscus-dark.css' 
           : 'https://liyuwriter.github.io/css/giscus-light.css';
@@ -39,10 +39,6 @@ layout: default
         script.setAttribute('data-category', 'Announcements');
         script.setAttribute('data-category-id', 'DIC_kwDOVbj_Nc4DJ9sd');
         script.setAttribute('data-mapping', 'pathname');
-        script.setAttribute('data-strict', '0');
-        script.setAttribute('data-reactions-enabled', '1');
-        script.setAttribute('data-emit-metadata', '0');
-        script.setAttribute('data-input-position', 'bottom');
         script.setAttribute('data-theme', themeUrl);
         script.setAttribute('data-lang', 'zh-CN');
         script.setAttribute('crossorigin', 'anonymous');

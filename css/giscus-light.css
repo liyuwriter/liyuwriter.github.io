@@ -2,34 +2,18 @@
 html, body {
   background-color: #faf9f6 !important;
   color: #323b48 !important;
-  font-family: -apple-system, "PingFang SC", sans-serif !important;
 }
-
-.gsc-comment-box {
-  border: 1px solid #e8e6e1 !important;
-  border-radius: 8px !important;
+.gsc-comment-box, .gsc-reactions-menu, .gsc-popover {
   background-color: #faf9f6 !important;
+  border-color: #e8e6e1 !important;
 }
 .gsc-comment-box-write, .gsc-comment-box-textarea {
   background-color: transparent !important;
 }
-
-.gsc-reactions-menu, .gsc-popover {
-  background-color: #faf9f6 !important;
-  border: 1px solid #e8e6e1 !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
-  z-index: 999 !important;
-}
-
-/* 暴力覆盖按钮：深灰底，纯白字 */
+/* 暴力锁定按钮：深灰底，纯白字 */
 .btn-primary {
   background-color: #323b48 !important;
   border: none !important;
-  border-radius: 4px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
 }
 .btn-primary *,
 .btn-primary span,
@@ -37,9 +21,4 @@ html, body {
 .btn-primary svg path {
   color: #ffffff !important;
   fill: #ffffff !important;
-  stroke: #ffffff !important;
-}
-
-.btn-primary:hover {
-  background-color: #c45525 !important;
 }
