@@ -130,6 +130,12 @@ body {
   opacity: 0.15;
   pointer-events: none;
   z-index: 0;
+  mix-blend-mode: multiply;
+}
+
+[data-theme="dark"] .home-decoration {
+  opacity: 0.08;
+  mix-blend-mode: lighten;
 }
 
 .post-item {
