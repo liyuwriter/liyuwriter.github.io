@@ -121,6 +121,17 @@ body {
   margin-top: 40px;
 }
 
+.home-decoration {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  max-width: 280px;
+  max-height: 280px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .post-item {
   padding: 24px 0;
   border-bottom: 1px solid var(--border-color);
