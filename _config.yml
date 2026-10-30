@@ -3,7 +3,7 @@ description: I think, therefore I am.
 url: "https://liyuwriter.github.io"
 timezone: Asia/Shanghai
 lang: zh
-permalink: /:year/:month/:title/
+permalink: /:year/:month/:day/:title.html
 markdown: kramdown
 kramdown:
   input: GFM
