@@ -127,15 +127,16 @@ body {
   bottom: 0;
   max-width: 160px;
   max-height: 160px;
-  opacity: 0.2;
+  opacity: 0.6;
   pointer-events: none;
   z-index: 0;
-  filter: grayscale(40%) sepia(20%);
+  mix-blend-mode: multiply;
 }
 
 [data-theme="dark"] .home-decoration {
-  opacity: 0.1;
-  filter: grayscale(60%) brightness(0.7);
+  opacity: 0.4;
+  filter: invert(1);
+  mix-blend-mode: screen;
 }
 
 .post-item {
