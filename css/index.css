@@ -164,8 +164,7 @@ body {
 
 @media (max-width: 600px) {
   .home-decoration {
-    max-width: 80px;
-    max-height: 80px;
+    display: none;
   }
 }
 
