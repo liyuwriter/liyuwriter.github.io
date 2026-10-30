@@ -465,6 +465,15 @@ body {
   50% { transform: translateY(-2px); }
 }
 
+.not-found-cat {
+  position: fixed;
+  right: 24px;
+  bottom: 80px;
+  width: 80px;
+  height: auto;
+  opacity: 0.6;
+}
+
 .not-found-title {
   font-family: var(--font-serif);
   font-size: 56px;
