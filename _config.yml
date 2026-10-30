@@ -7,6 +7,8 @@ permalink: /:year/:month/:day/:title.html
 markdown: kramdown
 kramdown:
   input: GFM
+giscus_css_light: "https://liyuwriter.github.io/css/giscus-light.css"
+giscus_css_dark: "https://liyuwriter.github.io/css/giscus-dark.css"
 
 plugins:
   - jekyll-feed

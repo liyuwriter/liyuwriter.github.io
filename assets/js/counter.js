@@ -26,32 +26,14 @@
     if (cached && Date.now() - cached.ts < CACHE_TTL) show(cached.count);
   } catch(e) {}
 
-  // 用搜索 API 按 title 精确查找，避免分页问题
-  var searchUrl = API + '/issues?labels=' + LABEL + '&state=open&per_page=1&sort=created&direction=desc';
+  // 直接用搜索 API 按 title 精确查找
+  var searchQuery = 'repo:' + REPO + '+label:' + LABEL + '+state:open+in:title+' + encodeURIComponent('"' + path + '"');
 
-  fetch(searchUrl, { headers: headers() })
+  fetch('https://api.github.com/search/issues?q=' + searchQuery, { headers: headers() })
     .then(function(r) { return r.json(); })
-    .then(function(issues) {
-      // 搜索可能返回多个，精确匹配 title
-      var issue = null;
-      for (var i = 0; i < issues.length; i++) {
-        if (issues[i].title === path) { issue = issues[i]; break; }
-      }
+    .then(function(data) {
+      var issue = (data.items && data.items.length > 0) ? data.items[0] : null;
 
-      // 如果没精确匹配，再尝试用搜索 API
-      if (!issue && token) {
-        return fetch('https://api.github.com/search/issues?q=repo:' + REPO + '+label:' + LABEL + '+state:open+in:title+' + encodeURIComponent('"' + path + '"'), {
-          headers: headers()
-        }).then(function(r) { return r.json(); }).then(function(data) {
-          if (data.items && data.items.length > 0) {
-            issue = data.items[0];
-          }
-          return issue;
-        });
-      }
-      return issue;
-    })
-    .then(function(issue) {
       if (issue) {
         var count = parseInt(issue.body) || 0;
         show(count);

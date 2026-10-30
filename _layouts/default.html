@@ -37,8 +37,8 @@
   <script>
     var toggleBtn = document.getElementById('theme-toggle');
     var htmlEl = document.documentElement;
-    var cssLight = 'https://liyuwriter.github.io/css/giscus-light.css';
-    var cssDark = 'https://liyuwriter.github.io/css/giscus-dark.css';
+    var cssLight = '{{ site.giscus_css_light }}';
+    var cssDark = '{{ site.giscus_css_dark }}';
 
     function updateIcon() {
       toggleBtn.textContent = htmlEl.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
@@ -57,11 +57,9 @@
     function onGiscusMessage(e) {
       if (e.origin !== 'https://giscus.app') return;
       if (!(typeof e.data === 'object' && e.data.giscus)) return;
-      // 过滤心跳消息，避免无限循环
       if (e.data.giscus.keepAlive) return;
       var currentTheme = htmlEl.getAttribute('data-theme') || 'light';
       syncGiscusTheme(currentTheme);
-      // 初始同步完成后移除监听，后续靠手动切换触发
       window.removeEventListener('message', onGiscusMessage);
     }
     window.addEventListener('message', onGiscusMessage);

@@ -139,6 +139,13 @@ body {
   mix-blend-mode: screen;
 }
 
+@media (max-width: 600px) {
+  .home-decoration {
+    max-width: 80px;
+    max-height: 80px;
+  }
+}
+
 .post-item {
   padding: 24px 0;
   border-bottom: 1px solid var(--border-color);
@@ -471,13 +478,11 @@ body {
 
 .not-found-cat {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-height: 50vh;
+  object-fit: contain;
   opacity: 0.12;
   z-index: 0;
   pointer-events: none;
-  flex: 1;
-  min-height: 0;
 }
 
 .not-found-title,

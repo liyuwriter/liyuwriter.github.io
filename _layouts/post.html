@@ -28,8 +28,8 @@ layout: default
       (function() {
         var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         var themeUrl = isDark
-          ? 'https://liyuwriter.github.io/css/giscus-dark.css'
-          : 'https://liyuwriter.github.io/css/giscus-light.css';
+          ? '{{ site.giscus_css_dark }}'
+          : '{{ site.giscus_css_light }}';
 
         var script = document.createElement('script');
         script.src = 'https://giscus.app/client.js';
