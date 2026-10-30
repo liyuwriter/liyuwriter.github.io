@@ -446,21 +446,20 @@ body {
   align-items: center;
   justify-content: flex-start;
   flex: 1;
-  padding-top: 20vh;
+  padding-top: 15vh;
   text-align: center;
   position: relative;
 }
 
 .not-found-cat {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0.12;
   z-index: 0;
   pointer-events: none;
+  flex: 1;
+  min-height: 0;
 }
 
 .not-found-title,
@@ -483,7 +482,7 @@ body {
 .not-found-text {
   color: var(--text-light);
   font-size: 15px;
-  margin: 0 0 32px;
+  margin: 0 0 24px;
   font-family: var(--font-serif);
 }
 
@@ -495,6 +494,7 @@ body {
   border-bottom: 1px solid var(--hover-color);
   padding-bottom: 1px;
   transition: opacity 0.2s;
+  margin-bottom: 36px;
 }
 .not-found-link:hover {
   opacity: 0.7;
