@@ -23,21 +23,24 @@ html, body {
   background-color: transparent !important;
 }
 
-/* 核心修复：强制按钮背景为深色，文字和图标为纯白色 */
+/* 强制按钮背景为深色，内部所有文字、SVG 图标为纯白 */
 .btn-primary { 
   background-color: #323b48 !important; 
-  color: #ffffff !important;
   border: none !important; 
   border-radius: 4px !important; 
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
-.btn-primary svg {
-  fill: #ffffff !important;
-  color: #ffffff !important;
+.btn-primary, 
+.btn-primary *, 
+.btn-primary span, 
+.btn-primary svg,
+.btn-primary svg path { 
+  color: #ffffff !important; 
+  fill: #ffffff !important; 
 }
+
 .btn-primary:hover { 
   background-color: #c45525 !important; 
-  color: #ffffff !important;
 }

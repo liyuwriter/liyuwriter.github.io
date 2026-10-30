@@ -27,25 +27,32 @@ html, body {
   color: #d4d4d4 !important;
 }
 
-/* 核心修复：强制按钮背景为浅色，文字和图标为深色 */
+/* 核心修复：强制按钮背景为浅灰，内部所有文字、SVG 图标为深黑 */
 .btn-primary { 
   background-color: #d4d4d4 !important; 
-  color: #1a1a1a !important; 
   border: none !important; 
   border-radius: 4px !important; 
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
-.btn-primary svg {
-  fill: #1a1a1a !important;
-  color: #1a1a1a !important;
+.btn-primary, 
+.btn-primary *, 
+.btn-primary span, 
+.btn-primary svg,
+.btn-primary svg path { 
+  color: #1a1a1a !important; 
+  fill: #1a1a1a !important; 
 }
+
 .btn-primary:hover { 
   background-color: #e07a5f !important; 
-  color: #ffffff !important; 
 }
-.btn-primary:hover svg {
+.btn-primary:hover,
+.btn-primary:hover *,
+.btn-primary:hover svg,
+.btn-primary:hover svg path {
+  color: #ffffff !important;
   fill: #ffffff !important;
 }
 
