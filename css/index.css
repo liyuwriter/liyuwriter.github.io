@@ -455,8 +455,8 @@ body {
   position: fixed;
   right: 30px;
   bottom: 80px;
-  width: 60px;
-  height: 48px;
+  width: 36px;
+  height: 29px;
   animation: breathe 3s ease-in-out infinite;
 }
 
