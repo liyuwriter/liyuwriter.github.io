@@ -444,9 +444,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex: 1;
-  margin-top: -60px;
+  padding-top: 20vh;
   text-align: center;
   position: relative;
 }
@@ -456,7 +456,7 @@ body {
   left: 0;
   bottom: 0;
   width: 100vw;
-  height: 70vh;
+  height: 50vh;
   object-fit: cover;
   object-position: bottom;
   opacity: 0.12;
