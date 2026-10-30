@@ -13,9 +13,6 @@ layout: default
           <a href="/tags/#{{ tag }}" class="text-tag">#{{ tag }}</a>
         {% endfor %}
       {% endif %}
-      <span class="view-count">
-        阅读量 <span id="page-view-count">-</span> 次
-      </span>
     </div>
 
     <div class="post-body">
@@ -48,8 +45,3 @@ layout: default
     </script>
   </div>
 </div>
-
-{% if site.data.counter.token %}
-<script>window.GITHUB_COUNTER_TOKEN="{{ site.data.counter.token }}";</script>
-{% endif %}
-<script src="/assets/js/counter.js" defer></script>
